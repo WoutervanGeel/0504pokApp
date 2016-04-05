@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> --> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/git/jquery.mobile-git.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/mobile/git/jquery.mobile-git.js"></script>
+        <title>Hello World</title>
+    </head>
+    <body>
+        
+        <div id="load-image"></div>
+        <!-- Body -->
+        
+        <!-- Home page -->
+        <div data-role="page" id="index-page">
+            <div data-theme="a" data-role="header" data-position="fixed">
+                <h3 id="pokedex">
+                    Pokedex
+                </h3>
+                <h3 id="battery-status">
+                    Battery status    
+                </h3>
+            </div>
+
+            <div data-role="content">
+                <ul data-role="listview" data-theme="a" id="pokemon-list">
+                
+                </ul>
+            </div>
+
+            <div data-theme="a" data-role="footer" data-position="fixed">
+                <a id="settings-button" href="#" data-role="button" data-icon="gear">Settings</a>
+            </div>
+        </div>  
+        
+        <!-- Detail page -->
+        <div data-role="page" id="detail-page">
+            <div data-theme="a" data-role="header" data-position="fixed">
+                <h3 id="pokemon-name">
+                    Pokemon name
+                </h3>
+                <a href="#index-page" class="ui-btn-right">Back</a>
+            </div>
+
+            <div data-role="detail-content">
+                
+                <ul data-role="listview" data-theme="a" id="types" data-inset="true">
+                <li data-role="list-divider" data-theme="b">Types</li>
+                </ul>
+                </br>
+                <ul data-role="listview" data-theme="a" id="moves" data-inset="true">
+                <li data-role="list-divider" data-theme="b">Moves</li>
+                </ul>
+            </div>
+
+            <div data-theme="a" data-role="footer" data-position="fixed">
+
+            </div>
+        </div> 
+        
+        <!-- settings page -->
+        <div data-role="page" id="settings-page" data-theme="b">
+            <div data-theme="b" data-role="header" data-position="fixed">
+                <h3>
+                    Settings
+                </h3>
+                <a href="#index-page" class="ui-btn-right">Back</a>
+            </div>
+
+            <div data-role="detail-content">
+                <div data-role="fieldcontain">
+                    <label for="username">Your name:</label>
+                    <input type="text" name="username" id="username" data-theme="a" value=""  />
+                    </br>
+                    <a href="#" id="save-button" data-role="button" data-theme="a" data-icon="check">Save</a>
+                </div>
+            </div>
+        </div> 
+        
+        <!-- camera page -->
+        <div data-role="page" id="camera-page" data-position="fixed">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Camera
+                </h3>
+                <a href="#index-page" class="ui-btn-right">Back</a>
+            </div>
+
+            <div data-role="content">
+                <a data-role="button" id="camera-button">Take a picture</a>
+                <div id="image"></div>
+            </div>
+
+            <div data-theme="a" data-role="footer" data-position="fixed">
+
+            </div>
+        </div>
+        
+        <!-- Don't edit -->
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        <!-- models -->
+        <script src="js/model/pokemon.js"></script>
+        
+        <!-- handler -->
+        <script src="js/controller/APIhandler.js"></script>
+        
+        <!-- controller -->
+        <script type="text/javascript" src="js/index.js"></script>
+
+    </body>
+</html>
