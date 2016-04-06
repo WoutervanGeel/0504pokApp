@@ -17,6 +17,8 @@ function Application(){
         self.addTapEventsToList();
         self.addPageEvents();
         self.updateUsername();
+        $('#pokemon-list').append('<li><img src="./img/pokeball_loading.gif" id="load-image"></img></li>');
+        $('#pokemon-list').listview('refresh');
         self.requestNewPokemon();
     }
         
