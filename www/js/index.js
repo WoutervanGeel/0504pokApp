@@ -174,7 +174,9 @@ function Application(){
             //types
             $('#types').append("<li data-role='list-divider' data-theme='b'>Types</li>");
             for(xType in self.selectedPokemon.types){
-                $('#types').append("<li>"+ self.selectedPokemon.types[xType] +"</li>")
+                //$('#types').append("<li>"+ self.selectedPokemon.types[xType] +"</li>");
+                $('#types').append('<li>'+self.getTypeImage(self.selectedPokemon.types[xType]) + '</li>');
+                //alert(self.getTypeImage(self.selectedPokemon.types[xType]));
             }
             
             //moves
@@ -254,6 +256,12 @@ function Application(){
             self.onPokemonListPage = false;
             $.mobile.changePage('settings.html');
         });
+    }
+    
+    self.getTypeImage = function(typeName){
+        var image = '<div id="pokemon-type"><div id="'+typeName+"-type";
+        image += '"></div></div>';
+        return image;
     }
     
     self.bindEvents();

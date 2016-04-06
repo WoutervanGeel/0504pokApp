@@ -125,3 +125,113 @@ h1 {
     margin: 0;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
+
+
+/* pokemon types */
+#normal-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 0px;
+}
+
+#grass-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -40px;
+}
+
+#fire-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -80px;
+}
+
+#water-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -120px;
+}
+
+#fighting-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -160px;
+}
+
+#flying-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -200px;
+}
+
+#poison-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -240px;
+}
+
+#ground-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -280px;
+}
+
+#rock-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -320px;
+}
+
+#bug-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -360px;
+}
+
+#ghost-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -400px;
+}
+
+#electric-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -440px;
+}
+
+#psychic-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -480px;
+}
+
+#ice-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -520px;
+}
+
+#dragon-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -560px;
+}
+
+#dark-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -600px;
+}
+
+#steel-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -640px;
+}
+
+#fairy-type {
+    height: 40px;
+    width: 114px;
+    background: url(../img/pokemon_types.png) 0 -680px;
+}
