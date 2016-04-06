@@ -12,20 +12,13 @@ function Application(){
    
     self.onDeviceReady = function() {
         self.addBatteryListeners();
-        self.addClickEventsToList();
-        self.addCameraButtonEvent();
+        self.addTapEventsToList();
         self.addPageEvents();
         self.updateUsername();
         self.requestNewPokemon();
     }
-    
+        
     self.addPageEvents = function(){
-        $("#detail-page").on("swiperight", function(){
-            //implement swipe right switch on single pokemon
-            //TODO implement switch
-            onPokemonListPage = true;
-            $.mobile.changePage('#index-page');
-        });
        
         $(document).on('pagebeforeshow', '#detail-page', function(){
             onPokemonListPage = false;
@@ -35,13 +28,7 @@ function Application(){
             self.drawDetailView();
         });
        
-        $("#camera-page").on("swipeleft", function(){
-            //implement swipe right switch on single pokemon
-            //TODO implement switch
-            //alert("swiping right");
-            onPokemonListPage = true;
-            $.mobile.changePage('#index-page');
-        });
+
        
         $(document).on('pagebeforeshow', '#index-page', function(){
             //alert("before indexPage show");
@@ -60,15 +47,29 @@ function Application(){
         });
         
         $("#index-page").on("swiperight", function(){
-            $.mobile.changePage('#camera-page');
+            $.mobile.changePage('camera.html');
             onPokemonListPage = false;
             
         });
+        
+        $(document).on("pageinit", "#settings-page", function(){
+            self.addSettingsEvents();
+        });
+        
+        $(document).on("pageinit", "#camera-page", function(){
+            self.addCameraEvents();
+        });
     }
     
-    self.addCameraButtonEvent = function(){
-        $("#camera-button").on('click', function(e){
-            
+    self.addCameraEvents = function(){
+        //swipe left
+        $(document).on("swipeleft", "#camera-page", function(){
+            onPokemonListPage = false;
+            $.mobile.changePage('index.html');
+        });
+        
+        //camera button
+        $("#camera-button").on('tap', function(e){
             navigator.camera.getPicture( self.cameraSuccess, self.cameraError, {
                 quality: 50, // Foto kwaliteit
                 destinationType: Camera.DestinationType.DATA_URL // Base64 gecodeerde afbeelding als resultaat
@@ -220,42 +221,36 @@ function Application(){
         return null;
     }
     
-    self.addClickEventsToList = function(){
-        $('#pokemon-list').on('click', function(e){
-            e.preventDefault();
-            var id = e.target.parentElement.id;
-            if(id != "load"){
-                self.selectedPokemon = self.getNewPokemon(id);
-                $.mobile.changePage('#detail-page');
-            }
-        });
-        
-        $('#settings-button').on('click', function(e){
-            e.preventDefault();
-            self.onPokemonListPage = false;
-            $.mobile.changePage('#settings-page');
-            //alert("setting called");
-            //localStorage.setItem("name", "My");
-            //self.updateUsername();
-        });
-        
-        $('#save-button').on('click', function(e){
+    self.addSettingsEvents = function(){
+        $('#save-button').on('tap', function(e){
             e.preventDefault();
             var value = $("#username").val();
             
             if(value.length >= 5 && value.length <= 10){
                 localStorage.setItem("name", value);
                 self.updateUsername();
-                self.onPokemonListPage = true;
-                $.mobile.changePage('#index-page');
+                //self.onPokemonListPage = true;
+                $.mobile.changePage('index.html');
             } else {
                 alert("you need to give a name between 5 and 10 characters");
             }
-            
-            //$.mobile.changePage('#settings-page');
-            //alert("setting called");
-            //localStorage.setItem("name", "My");
-            //self.updateUsername();
+        });
+    }
+    
+    self.addTapEventsToList = function(){
+        $('#pokemon-list').on('tap', function(e){
+            e.preventDefault();
+            var id = e.target.parentElement.id;
+            if(id != "load"){
+                self.selectedPokemon = self.getNewPokemon(id);
+                $.mobile.changePage('detail.html');
+            }
+        });
+        
+        $('#settings-button').on('tap', function(e){
+            e.preventDefault();
+            self.onPokemonListPage = false;
+            $.mobile.changePage('settings.html');
         });
     }
     
