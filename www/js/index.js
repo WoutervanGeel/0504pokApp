@@ -9,6 +9,8 @@ function Application(){
     var number = 1;
     var allPokemon = [];
     var onPokemonListPage = true;
+    
+    //background-position:0 -100px;
    
     self.onDeviceReady = function() {
         self.addBatteryListeners();
@@ -42,6 +44,7 @@ function Application(){
                 if(self.isOnScreen(element)){
                     //alert("requesting new pokemon");
                     self.requestNewPokemon();
+                    element.html('<img src="./img/pokeball_loading.gif" id="load-image"></img>');
                 }
             }
         });
@@ -164,29 +167,28 @@ function Application(){
         $('#types').empty();
         $('#moves').empty();
         
-        //add types
-        console.log(self.selectedPokemon.types);
-        if(self.selectedPokemon.types != null){
+        
+        //console.log(self.selectedPokemon.types);
+        if(self.selectedPokemon.types != null && self.selectedPokemon.moves != null){
+            $('#loading-image').hide();
+            //types
             $('#types').append("<li data-role='list-divider' data-theme='b'>Types</li>");
             for(xType in self.selectedPokemon.types){
-                console.log(self.selectedPokemon);
-                console.log(self.selectedPokemon.types);
-                console.log(self.selectedPokemon.types[xType]);
                 $('#types').append("<li>"+ self.selectedPokemon.types[xType] +"</li>")
             }
-        }
-        
-        //add moves
-        if(self.selectedPokemon.types != null){
+            
+            //moves
             $('#moves').append("<li data-role='list-divider' data-theme='b'>Moves</li>");
             for(xMove in self.selectedPokemon.moves){
                 $('#moves').append("<li>"+ self.selectedPokemon.moves[xMove] +"</li>")
             }
+            
+            //refresh lists
+            $('#types').listview('refresh');
+            $('#moves').listview('refresh');
+        } else {
+            $('#loading-image').show();
         }
-        
-        //refresh lists
-        $('#types').listview('refresh');
-        $('#moves').listview('refresh');
     }
     
     self.updateUsername = function(){
